@@ -29,7 +29,7 @@ $(document).ready(function(){
 
     document.onkeyup = function (data) {
         if (data.which == 27 ) {
-            $.post('http://calculator/close', JSON.stringify({}));
+            $.post('http://Calculator/close', JSON.stringify({}));
         }
     };
 });
@@ -161,7 +161,7 @@ function enterValue(e) {
             expression = screen.innerHTML;
         } else if (value == "Backspace") {
             if (screen.innerHTML == "") {
-                $.post('http://calculator/close', JSON.stringify({}));
+                $.post('http://Calculator/close', JSON.stringify({}));
                 screen.innerHTML = cursor;
             }
             newExpression = expression.split("");
