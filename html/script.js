@@ -10,7 +10,7 @@ var cursor = '<span class="cursor">|</span>';
 $(document).ready(function(){
     window.addEventListener('message', function(event) {
 
-        if (event.data.action == 'open') {
+        if (event.data.action == true) {
             // $('body').show();
             $("body").css("display", "flex");
             screen.innerHTML = "";
@@ -20,8 +20,7 @@ $(document).ready(function(){
             decimalPointCheck = [];
             mathError = false;
 
-        } else if (event.data.action == 'close') {
-            // $('body').hide();
+        } else if (event.data.action == false) {
             $("body").css("display", "none");
         }
     });
@@ -29,7 +28,7 @@ $(document).ready(function(){
 
     document.onkeyup = function (data) {
         if (data.which == 27 ) {
-            $.post('http://Calculator/close', JSON.stringify({}));
+            $.post('http://calculator/close', JSON.stringify({}));
         }
     };
 });
@@ -161,7 +160,7 @@ function enterValue(e) {
             expression = screen.innerHTML;
         } else if (value == "Backspace") {
             if (screen.innerHTML == "") {
-                $.post('http://Calculator/close', JSON.stringify({}));
+                $.post('http://calculator/close', JSON.stringify({}));
                 screen.innerHTML = cursor;
             }
             newExpression = expression.split("");

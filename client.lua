@@ -1,6 +1,7 @@
 -- // DONT CHANGE
 local oIsAnimationOn = false
-local oObjectProp = "calculator_terbium"
+--local oObjectProp = "calculator_terbium"
+local oObjectProp = ""
 local oObject_net = nil
 
 RegisterCommand('calc', function(source, args, rawCommand)
@@ -29,8 +30,8 @@ function Calculator()
         loadAnimDict(ad3)
         RequestModel(GetHashKey(oObjectProp))
         if oIsAnimationOn == true then
-            EnableGui(false)
             TaskPlayAnim(player, ad3, "exit", 8.0, 1.0, -1, 50, 0, 0, 0, 0)
+            EnableGui(false)
             Wait(1840)
             DetachEntity(NetToObj(oObject_net), 1, 1)
             DeleteEntity(NetToObj(oObject_net))
@@ -55,16 +56,9 @@ function Calculator()
 end
 
 function EnableGui(state)
-    SetNuiFocus(state, state)
-    local actionvariable;
-    if state == true then
-        actionvariable = "open"
-    else
-        actionvariable = "close"
-    end
-
+    SetNuiFocus(state, false)
     SendNUIMessage({
-        action = actionvariable,
+        action = state,
     })
 end
 
