@@ -1,7 +1,6 @@
 -- // DONT CHANGE
 local oIsAnimationOn = false
---local oObjectProp = "calculator_terbium"
-local oObjectProp = ""
+local oObjectProp = "calculator_terbium"
 local oObject_net = nil
 
 RegisterCommand('calc', function(source, args, rawCommand)
