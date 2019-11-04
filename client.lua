@@ -55,7 +55,7 @@ function Calculator()
 end
 
 function EnableGui(state)
-    SetNuiFocus(state, false)
+    SetNuiFocus(state, state)
     SendNUIMessage({
         action = state,
     })
