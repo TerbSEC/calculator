@@ -6,9 +6,14 @@ var operatorCheck = [];
 var decimalPointCheck = [];
 var mathError = false;
 var cursor = '<span class="cursor">|</span>';
+var resourceName = "";
 
 $(document).ready(function(){
     window.addEventListener('message', function(event) {
+
+        if (event.data.resourcename) {
+            resourceName = event.data.resourcename;
+        }
 
         if (event.data.action == true) {
             // $('body').show();
@@ -28,7 +33,7 @@ $(document).ready(function(){
 
     document.onkeyup = function (data) {
         if (data.which == 27 ) {
-            $.post('http://calculator/close', JSON.stringify({}));
+            $.post('http://'+resourceName+'/close', JSON.stringify({}));
         }
     };
 });
@@ -160,7 +165,7 @@ function enterValue(e) {
             expression = screen.innerHTML;
         } else if (value == "Backspace") {
             if (screen.innerHTML == "") {
-                $.post('http://calculator/close', JSON.stringify({}));
+                $.post('http://'+resourceName+'/close', JSON.stringify({}));
                 screen.innerHTML = cursor;
             }
             newExpression = expression.split("");

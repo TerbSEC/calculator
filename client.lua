@@ -3,6 +3,15 @@ local oIsAnimationOn = false
 local oObjectProp = "calculator_terbium"
 local oObject_net = nil
 
+AddEventHandler('playerSpawned', function(spawn)
+    local resourceName = GetCurrentResourceName()
+    SendNUIMessage( { resourcename = resourceName } )
+end)
+
+SetNuiFocus(false)
+
+
+
 RegisterCommand('calc', function(source, args, rawCommand)
     if (oIsAnimationOn == false) then
         Calculator()
@@ -55,12 +64,11 @@ function Calculator()
 end
 
 function EnableGui(state)
-    SetNuiFocus(state, false)
+    SetNuiFocus(state, state)
     SendNUIMessage({
         action = state,
     })
 end
-
 
 
 function loadAnimDict(dict)
