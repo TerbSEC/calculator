@@ -17,7 +17,7 @@ RegisterCommand('calc', function(source, args, rawCommand)
         Calculator()
     end
 end)
---sd
+
 RegisterNUICallback("close",function(data,cb)
     Calculator()
 end)
